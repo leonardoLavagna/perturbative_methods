@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 def init():
     line_real.set_data([], [])
     line_prob.set_data([], [])
