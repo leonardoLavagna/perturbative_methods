@@ -28,7 +28,7 @@ def plot_energy_and_wavefunctions(L, epsilon, n):
     #axes[1].set_xlabel('Position $x$')
     axes[1].set_ylabel('Wavefunction $\\psi(x)$')
     #axes[1].legend()
-    axes[0].legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shadow=True, ncol=5)
+    axes[1].legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shadow=True, ncol=5)
     axes[1].grid(True)
     st.pyplot(fig)
 
