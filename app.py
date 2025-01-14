@@ -42,34 +42,3 @@ n = st.sidebar.slider("Quantum Number (n)", 1, 10, 1)
 
 st.header("Energy Levels and Wavefunctions")
 plot_energy_and_wavefunctions(L, epsilon, n)
-
-st.header("Wavefunction Evolution Animation")
-frames = 100
-t = np.linspace(0, 2 * np.pi, frames)
-x = np.linspace(0, L, 200)
-
-def init():
-    line_real.set_data([], [])
-    line_prob.set_data([], [])
-    return line_real, line_prob
-
-def animate(i):
-    t_val = t[i]
-    psi = Psi(n, x, L, t_val)
-    psi_real = np.real(psi)
-    psi_squared = np.abs(psi)**2
-    line_real.set_data(x, psi_real)
-    line_prob.set_data(x, psi_squared)
-    return line_real, line_prob
-
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
-ax1.set_xlim(0, L)
-ax1.set_ylim(-2, 2)
-ax2.set_xlim(0, L)
-ax2.set_ylim(0, 4)
-ax1.set_xlabel('Position (x)')
-ax1.set_ylabel('Re[Ψ(x,t)]')
-ax2.set_xlabel('Position (x)')
-ax2.set_ylabel('|Ψ(x,t)|²')
-line_real, = ax1.plot([], [], lw=2)
-line_prob, = ax2.plot([], [], lw=2)
