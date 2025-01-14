@@ -36,8 +36,8 @@ st.title("Potential well and its perturbations")
 st.sidebar.header("Simulation Parameters")
 
 # Sidebar inputs
-L = st.sidebar.slider("Well Length (L)", 1, 10.0, 1.0)
-epsilon = st.sidebar.slider("Perturbation Strength (epsilon)", 0.0, 1, 0.01)
+L = st.sidebar.slider("Well Length (L)", 1, 10, 1)
+epsilon = st.sidebar.slider("Perturbation Strength (epsilon)", 0.0, 1.0, 0.01)
 n = st.sidebar.slider("Quantum Number (n)", 1, 10, 1)
 
 st.header("Energy Levels and Wavefunctions")
