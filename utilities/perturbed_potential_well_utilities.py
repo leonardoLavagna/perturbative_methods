@@ -1,3 +1,6 @@
+import numpy as np
+from scipy.integrate import quad
+
 def V_prime(x, epsilon):
     return epsilon * x**2
 
