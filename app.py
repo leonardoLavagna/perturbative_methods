@@ -36,9 +36,9 @@ st.title("Potential well and its perturbations")
 st.sidebar.header("Simulation Parameters")
 
 # Sidebar inputs
-L = st.sidebar.slider("Well Length (L)", 0.5, 5.0, 1.0)
-epsilon = st.sidebar.slider("Perturbation Strength (epsilon)", 0.0, 25.0, 0.1)
-n = st.sidebar.slider("Quantum Number (n)", 1, 5, 1)
+L = st.sidebar.slider("Well Length (L)", 1, 10.0, 1.0)
+epsilon = st.sidebar.slider("Perturbation Strength (epsilon)", 0.0, 1, 0.01)
+n = st.sidebar.slider("Quantum Number (n)", 1, 10, 1)
 
 st.header("Energy Levels and Wavefunctions")
 plot_energy_and_wavefunctions(L, epsilon, n)
@@ -73,11 +73,3 @@ ax2.set_xlabel('Position (x)')
 ax2.set_ylabel('|Ψ(x,t)|²')
 line_real, = ax1.plot([], [], lw=2)
 line_prob, = ax2.plot([], [], lw=2)
-
-ani = FuncAnimation(fig, animate, init_func=init, frames=frames, interval=50, blit=True)
-
-buf = BytesIO()
-ani.save(buf)
-buf.seek(0)
-
-st.image(buf)
