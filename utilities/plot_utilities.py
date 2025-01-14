@@ -1,8 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-import os
-os.chdir("..")
 from config import *
 
 def init():
