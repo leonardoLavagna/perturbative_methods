@@ -77,7 +77,7 @@ line_prob, = ax2.plot([], [], lw=2)
 ani = FuncAnimation(fig, animate, init_func=init, frames=frames, interval=50, blit=True)
 
 buf = BytesIO()
-ani.save(buf, format='gif')
+ani.save(buf)
 buf.seek(0)
 
-st.image(buf, format='gif')
+st.image(buf)
