@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.integrate import quad
 from config import *
-from utilities.unperturbed_potential_well_utilities import f_n, E_n
+from utilities.unperturbed_potential_well_utilities import *
 
 def V_prime(x, epsilon):
     return epsilon * x**2
