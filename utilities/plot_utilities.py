@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+import os
+os.chdir("..")
+from config import *
+
 def init():
     line_real.set_data([], [])
     line_prob.set_data([], [])
