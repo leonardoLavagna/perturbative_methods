@@ -2,11 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from config import *
 
-def init(line_real, line_prob):
-    line_real.set_data([], [])
-    line_prob.set_data([], [])
-    return line_real, line_prob
-
 def animate(i):
     t_val = t[i]
     psi = Psi(n, x, L, t_val)
