@@ -1,8 +1,5 @@
 import numpy as np
 from scipy.integrate import quad
-
-import os
-os.chdir("..")
 from config import *
 
 def V_prime(x, epsilon):
