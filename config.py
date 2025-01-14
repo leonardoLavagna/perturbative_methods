@@ -7,6 +7,8 @@
 # @ NESYA https://github.com/NesyaLab
 #------------------------------------------------------------------------------
 
+import numpy as np 
+
 # Size of the well
 L = 1.0  
 
