@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from config import *
+from utilities.perturbed_potential_well_utilities import *
+from utilities.unperturbed_potential_well_utilities import *
 
 def animate(i):
     t_val = t[i]
