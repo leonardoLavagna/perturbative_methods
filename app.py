@@ -11,9 +11,9 @@ def plot_energy_and_wavefunctions(L, epsilon, n):
     E0, E1, E2, psi_0, psi_1, psi_2, psi_total = energy_and_wavefunctions_corrections(x, L, epsilon, n)
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
     # Left: Energy levels
-    axes[0].hlines(E0, 0.5, 1.5, color='blue', label='Unperturbed$')
-    axes[0].hlines(E0 + E1, 1.5, 2.5, color='orange', label='1st Order$')
-    axes[0].hlines(E0 + E1 + E2, 2.5, 3.5, color='green', label='2nd Order$')
+    axes[0].hlines(E0, 0.5, 1.5, color='blue', label='Unperturbed')
+    axes[0].hlines(E0 + E1, 1.5, 2.5, color='orange', label='1st Order')
+    axes[0].hlines(E0 + E1 + E2, 2.5, 3.5, color='green', label='2nd Order')
     axes[0].set_title('Energy Levels')
     axes[0].set_xticks([])
     axes[0].set_ylabel('Energy')
@@ -21,7 +21,7 @@ def plot_energy_and_wavefunctions(L, epsilon, n):
     axes[0].legend(loc='upper center', bbox_to_anchor=(0.5, -0.05),fancybox=True, shadow=True, ncol=5)
     axes[0].grid(True)
     # Right: Wavefunctions
-    axes[1].plot(x, psi_0, label='Unperturbed$', color='blue')
+    axes[1].plot(x, psi_0, label='Unperturbed', color='blue')
     axes[1].plot(x, psi_0 + psi_1, label='1st Order', color='orange')
     axes[1].plot(x, psi_total, label='2nd Order', color='green')
     axes[1].set_title('Wavefunctions')
