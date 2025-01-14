@@ -1,7 +1,4 @@
 import numpy as np
-
-import os
-os.chdir("..")
 from config import *
 
 def E_n(n, L):
