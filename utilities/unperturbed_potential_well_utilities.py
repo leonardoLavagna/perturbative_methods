@@ -1,5 +1,9 @@
 import numpy as np
 
+import os
+os.chdir("..")
+from config import *
+
 def E_n(n, L):
     return (n**2 * np.pi**2 * hbar**2) / (2 * m * L**2)
 
