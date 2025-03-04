@@ -12,7 +12,7 @@ from config import *
 st.title("Perturbative methods in action")
 
 def select_problem():
-    return st.sidebar.selectbox("Select a topic", ["Introduction", "Potential Well"], index=0)
+    return st.sidebar.selectbox("Select a topic", ["Introduction", "The potential well problem"], index=0)
     
 problem = select_problem()
 
@@ -85,10 +85,41 @@ if problem == "Introduction":
     
 
 ################################################
-# 2. POTENTIAL WELL
+# 3. DIRECT PERTURBATIVE METHOD
 ################################################  
-elif problem == "Potential Well":
-    st.header("Potential Well Simulation")
+elif problem == "Perturbative methods":
+    st.header("Perturbative methods")
+    st.markdown(r"""
+    A direct perturbative method can be applied to solve the energy-eigenvalue equation in the time-independent case, when a small deviation from the unperturbed 
+    problem is considered. In particular, at the first order, the potential changes as $V(x)\to V'(x; \varepsilon)=V(x)+\varepsilon V^{(1)}(x)$, 
+    and thus the Hamiltonian becomes $\hat{H}\to \hat{H}'=\hat{H}+\varepsilon \hat{H}^{(1)}$, for given $V^{(1)}$, $\hat{H}^{(1)}$ suitable perturbation terms. 
+    We will see that in this setting it is easy to find approximate solutions of the perturbed case using the unperturbed solution with a power series expansion 
+    trick, provided that different energy levels in the unperturbed spectrum have nonzero gap (i.e., $E_n-E_m\ne 0$ for every $n\ne m$). 
+    The key idea of this method can also be extended to higher-order deviations 
+    $V\to V'=V+\varepsilon V^{(1)}+\varepsilon^2V^{(2)}+\dots$ and $\hat{H}\to \hat{H}'=\hat{H}+\varepsilon\hat{H}^{(1)}+\varepsilon^2\hat{H}^{(2)}+\dots$.
+    Let's start with the general case where there are at most countable energy levels. Expanding the energy level $E_n$ and the solution $f_n$ of 
+    the unperturbed problem in a power series in terms of $\varepsilon$, and considering corrections $f_n^{(k)}, E_n^{(k)}$ of order $k$ to the original solution and energy, yields
+    $$
+    (\hat{H}+\varepsilon \hat{H}')\Bigl(\sum_{k=0}^\infty \varepsilon^k{f}_n^{(k)}\Bigr)=\Bigl(\sum_{k=0}^\infty\varepsilon^k {E}_n^{(k)} \Bigr)\Bigl(\sum_{k=0}^\infty \varepsilon^k{f}_n^{(k)}\Bigr)\,,
+    $$
+    where $f_n^{(0)}:=f_n$ and $E_n^{(0)}:=E_n$ by definition. Collecting the terms which are powers of $\varepsilon$ and after simple algebraic manipulations,
+    we get the first-order correction formula:
+    $$
+    E_n^{(1)}=\langle f_n|\hat{H}'f_n\rangle\,,
+    $$
+    which shows that the first energy shift is the expectation value of the perturbation calculated in the unperturbed state. With similar calculations, 
+    it is also easy to get the second-order correction to the energy, which (in the non-degenerate case) reads:
+    $$
+    E_n^{(2)}=\sum_{h\ne k}\frac{|\langle f_h | \hat{H}' f_k\rangle|^2}{E_h-E_k}\,.
+    $$
+    """)
+
+    
+################################################
+# 3. POTENTIAL WELL
+################################################  
+elif problem == "The potential well problem":
+    st.header("The potential well problem")
     st.markdown(r'''
     Consider a particle of mass $m$ confined to an interval $I := [0, L]$ of length $L > 0$. The potential is given by
     $$
@@ -134,7 +165,68 @@ elif problem == "Potential Well":
     $$
     ''')
     
-    st.subheader("Visualization of the nergy shifts and the wavefunction corrections")
+    st.subheader("Energy shifts and perturbed wavefunctions")
+    st.markdown(r"""If we consider the perturbation $V'=V_0$ obtained by adding a positive constant $V_0>0$ to the zero potential in the interval $I=[0,L]$,
+    we have the first-order correction of the energy:
+    $$
+    E_n^{(1)}=\langle f_n |V_0 f_n\rangle =V_0\,.
+    $$
+    To find the first-order correction to the wave function, we need to solve:
+    $$
+    (\hat{H}-E_n)f_n^{(1)}=-(\hat{H}_{p}-E_n^{(1)})f_n\,.
+    $$
+    Since the unperturbed wave functions constitute a complete set of orthonormal functions, we can write:
+    $$
+    f_n^{(1)}=\sum_{m\ne n}c_{mn}f_m
+    $$
+    for suitable constants $c_{mn}$, which means that:
+    $$
+    \sum_{m\ne n} (E_m-E_n)c_{mn}f_m=-(\hat{H}_{p}-E^{(1)}_n)f_n
+    $$
+    and taking the inner product with $f_k$ yields:
+    $$
+    \sum_{m\ne n}(E_m-E_n)c_{mn}\langle f_k|f_m\rangle = -\langle f_k|\hat{H}_{p} f_n\rangle + E_n^{(1)}\langle f_k|f_n\rangle\,,
+    $$
+    or, equivalently, 
+    $$
+    c_{mn}=\frac{\langle f_m|\hat{H}_{p} f_n\rangle}{E_n-E_m}\,.
+    $$
+    Putting everything together, we have the general first-order correction to the wave function:
+    $$
+    f_n^{(1)}=\sum_{m\ne n} \frac{\langle f_m|\hat{H}_{p}f_n\rangle}{E_n-E_m}f_m\,,
+    $$
+    which, in the potential well case we are considering, with a constant perturbation $V_0$, means:
+    $$
+    f_n^{(1)}=\sum_{m\ne n} \frac{\langle f_m|V_0f_n\rangle}{E_n-E_m}f_m=V_0\sum_{m\ne n}\frac{f_m}{E_n-E_m}\,.
+    $$
+    Similar calculations can be carried out to get the second-order corrections, and are quite general (i.e., not limited to the case of the potential well, but applicable, 
+    for example, in the harmonic oscillator case). 
+    Clearly, if $E_m-E_k=0$, the previous derivation of the closed formula expression for the first-order approximation of the wave function is not valid, 
+    and the solution must be deduced using degenerate perturbation theory. In that case, indirect perturbative methods could also be tried as a valid alternative. 
+    """)
+    st.markdown(r"""Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy 
+    - $E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}$;
+    
+    the first order correction $E_n^{(0)}+E^{(1)}_n$, where
+    - $E_n^{(1)}=\langle f_n^{(0)} \ | \ V'f_n^{(0)}$ obtained as the expectation value of the perturbation calculated in the
+    unperturbed state;
+    
+    and the second order correction $E_n^{(0)}+E^{(1)}_n + E^{(2)}_n$, where
+    
+    - $E_n^{(2)}= \sum_{m\ne n}\frac{|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{E_n^{(0)}-E_{m}^(0)}$.
+    
+    In the right panel we see the corrections of the wavefunctions, starting from the unperturbed case
+    
+    - $f_n^{(0)}(x)=\sqrt{\frac{2}{L}}\sin(\frac{n\pi x}{L})$;
+
+    then the first order correction $f_n^{(0)}(x)+f_n^{(1)}(x)$, where
+
+    - $f_n^{(1)}(x)=\sum_{m\ne n}\frac{|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{E_n^{(0)}-E_{m}^(0)} f_n^{(0)}(x)$
+
+    and, finally, the second order correction $f_n^{(0)}(x)+f_n^{(1)}(x) + f_n^{(2)}(x)$, where
+
+    - $f_n^{(2)}(x)=\sum_{m\ne n}\sum_{k\ne m}\frac{|\langle f_k^{(0)} \ | \ V'f_m^{(0)}|^2|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{(E_n^{(0)}-E_{m}^(0))(E_m^{(0)}-E_{k}^(0))} f_k^{(0)}(x).$
+    """)
     L = st.sidebar.slider("Well Length (L)", min_value=0.5, max_value=5.0, value=1.0, step=0.1)
     epsilon = st.sidebar.slider("Perturbation Strength (ε)", min_value=0.0, max_value=5.0, value=0.1, step=0.05)
     n = st.sidebar.slider("Quantum Number (n)", min_value=1, max_value=5, value=1, step=1)
