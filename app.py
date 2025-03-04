@@ -204,7 +204,10 @@ elif problem == "The potential well problem":
     Clearly, if $E_m-E_k=0$, the previous derivation of the closed formula expression for the first-order approximation of the wave function is not valid, 
     and the solution must be deduced using degenerate perturbation theory. In that case, indirect perturbative methods could also be tried as a valid alternative. 
     """)
-    st.markdown(r"""Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy $E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}$,
+    st.markdown(r"""Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy 
+    $$
+    E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}\,,
+    $$
     the first order correction $E_n^{(0)}+E^{(1)}_n$, where $E_n^{(1)}$ is obtained as the expectation value of the perturbation calculated in the
     unperturbed state, and the second order correction $E_n^{(0)}+E^{(1)}_n + E^{(2)}_n$, where 
     $$
