@@ -166,7 +166,7 @@ elif problem == "The potential well problem":
     ''')
     
     st.subheader("Energy shifts and perturbed wavefunctions")
-    st.markdown(r"""If we consider the perturbation $V'=V_0$ obtained by adding a positive constant $V_0>0$ to the zero potential in the interval $I=[0,L]$,
+    st.markdown(r'''If we consider the perturbation $V'=V_0$ obtained by adding a positive constant $V_0>0$ to the zero potential in the interval $I=[0,L]$,
     we have the first-order correction of the energy:
     $$
     E_n^{(1)}=\langle f_n |V_0 f_n\rangle =V_0\,.
@@ -203,39 +203,29 @@ elif problem == "The potential well problem":
     for example, in the harmonic oscillator case). 
     Clearly, if $E_m-E_k=0$, the previous derivation of the closed formula expression for the first-order approximation of the wave function is not valid, 
     and the solution must be deduced using degenerate perturbation theory. In that case, indirect perturbative methods could also be tried as a valid alternative. 
-    """)
-    st.markdown(r"""Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy
-    
+    ''')
+    st.markdown(r'''Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy
     $$
     E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}\,,
     $$
-    
     the first order correction $E_n^{(0)}+E^{(1)}_n$, where $E_n^{(1)}$ is obtained as the expectation value of the perturbation calculated in the
     unperturbed state, and the second order correction $E_n^{(0)}+E^{(1)}_n + E^{(2)}_n$, where 
-    
     $$
     E_n^{(2)}= \sum_{m\ne n}\frac{|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{E_n^{(0)}-E_{m}^(0)}\,.
     $$
-    
     In the right panel we see the corrections of the wavefunctions, starting from the unperturbed case 
-    
     $$
     f_n^{(0)}(x)=\sqrt{\frac{2}{L}}\sin(\frac{n\pi x}{L})\,,
     $$
-    
     then the first order correction $f_n^{(0)}(x)+f_n^{(1)}(x)$, where 
-    
     $$
     f_n^{(1)}(x)=\sum_{m\ne n}\frac{|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{E_n^{(0)}-E_{m}^(0)} f_n^{(0)}(x)
     $$
-    
     and, finally, the second order correction $f_n^{(0)}(x)+f_n^{(1)}(x) + f_n^{(2)}(x)$, where
-    
     $$
     f_n^{(2)}(x)=\sum_{m\ne n}\sum_{k\ne m}\frac{|\langle f_k^{(0)} \ | \ V'f_m^{(0)}|^2|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{(E_n^{(0)}-E_{m}^(0))(E_m^{(0)}-E_{k}^(0))} f_k^{(0)}(x)\,.
     $$
-    
-    """)
+    ''')
     L = st.sidebar.slider("Well Length (L)", min_value=0.5, max_value=5.0, value=1.0, step=0.1)
     epsilon = st.sidebar.slider("Perturbation Strength (ε)", min_value=0.0, max_value=5.0, value=0.1, step=0.05)
     n = st.sidebar.slider("Quantum Number (n)", min_value=1, max_value=5, value=1, step=1)
