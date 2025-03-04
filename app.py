@@ -141,7 +141,7 @@ elif problem == "Potential Well":
     # Compute energy levels and wavefunctions
     x = np.linspace(0, L, 200)
     E0, E1, E2, psi_0, psi_1, psi_2, psi_total = energy_and_wavefunctions_corrections(x, L=L, epsilon=epsilon, n=n)
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    fig, axes = plt.subplots(1, 2, figsize=(14, 8))
     axes[0].hlines(E0, 0.5, 1.5, color='blue', label='Unperturbed $E_n^{(0)}$')
     axes[0].hlines(E0 + E1, 1.5, 2.5, color='red', label='1st Order $E_n^{(0)} + E_n^{(1)}$')
     axes[0].hlines(E0 + E1 + E2, 2.5, 3.5, color='green', label='2nd Order $E_n^{(0)} + E_n^{(1)} + E_n^{(2)}$')
