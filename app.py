@@ -12,7 +12,7 @@ from config import *
 st.title("Perturbative methods in action")
 
 def select_problem():
-    return st.sidebar.selectbox("Select a problem", ["Introduction", "Potential Well"], index=0)
+    return st.sidebar.selectbox("Select a topic", ["Introduction", "Potential Well"], index=0)
     
 problem = select_problem()
 
