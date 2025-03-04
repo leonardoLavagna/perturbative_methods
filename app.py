@@ -166,7 +166,8 @@ elif problem == "The potential well problem":
     ''')
     
     st.subheader("Energy shifts and perturbed wavefunctions")
-    st.markdown(r'''If we consider the perturbation $V'=V_0$ obtained by adding a positive constant $V_0>0$ to the zero potential in the interval $I=[0,L]$,
+    st.markdown(r'''
+    If we consider the perturbation $V'=V_0$ obtained by adding a positive constant $V_0>0$ to the zero potential in the interval $I=[0,L]$,
     we have the first-order correction of the energy:
     $$
     E_n^{(1)}=\langle f_n |V_0 f_n\rangle =V_0\,.
