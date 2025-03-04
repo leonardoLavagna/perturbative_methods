@@ -203,8 +203,8 @@ elif problem == "The potential well problem":
     for example, in the harmonic oscillator case). 
     Clearly, if $E_m-E_k=0$, the previous derivation of the closed formula expression for the first-order approximation of the wave function is not valid, 
     and the solution must be deduced using degenerate perturbation theory. In that case, indirect perturbative methods could also be tried as a valid alternative. 
-    ''')
-    st.markdown(r'''Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy
+    
+    Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy
     $$
     E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}\,,
     $$
