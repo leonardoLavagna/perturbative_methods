@@ -136,7 +136,7 @@ elif problem == "Potential Well":
     
     st.subheader("Visualization of the nergy shifts and the wavefunction corrections")
     L = st.sidebar.slider("Well Length (L)", min_value=0.5, max_value=5.0, value=1.0, step=0.1)
-    epsilon = st.sidebar.slider("Perturbation Strength (ε)", min_value=0.0, max_value=1.0, value=0.1, step=0.05)
+    epsilon = st.sidebar.slider("Perturbation Strength (ε)", min_value=0.0, max_value=5.0, value=0.1, step=0.05)
     n = st.sidebar.slider("Quantum Number (n)", min_value=1, max_value=5, value=1, step=1)
     # Compute energy levels and wavefunctions
     x = np.linspace(0, L, 200)
