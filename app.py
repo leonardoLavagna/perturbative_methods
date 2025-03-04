@@ -11,11 +11,11 @@ from config import *
 ################################################   
 st.title("Perturbative methods in action")
 
-# Select problem
 def select_problem():
     return st.sidebar.selectbox("Select a problem", ["Introduction", "Potential Well"], index=0)
-
+    
 problem = select_problem()
+
 
 ################################################
 # 1. INTRODUCTION
@@ -82,24 +82,66 @@ if problem == "Introduction":
 
     In this app, we provide the solution of some one-dimensional quantum mechanical problems with insightful visualizations.
     ''')
+    
 
 ################################################
 # 2. POTENTIAL WELL
 ################################################  
 elif problem == "Potential Well":
     st.header("Potential Well Simulation")
-    
+    st.markdown(r'''
+    Consider a particle of mass $m$ confined to an interval $I := [0, L]$ of length $L > 0$. The potential is given by
+    $$
+    V(x) = \begin{cases} 0, & x \in I, \\ +\infty, & \text{otherwise}, \end{cases}
+    $$
+    which means the particle experiences infinite forces at $x = 0$ and $x = L$, preventing it from escaping.
+    Outside the well, the wavefunction is zero, $f(x) = 0$ for $x \notin I$, since the probability of finding the particle there is zero. 
+    Inside the well, the Schrödinger equation simplifies to
+    $$
+    \frac{d^2f}{dx^2} = - k^2 f,
+    $$
+    where
+    $$
+    k := \hbar^{-1} \sqrt{2mE}.
+    $$
+    This is the equation of a [harmonic oscillator](https://en.wikipedia.org/wiki/Harmonic_oscillator), with the general solution
+    $$
+    f(x) = A \sin(kx) + B \cos(kx).
+    $$
+    Applying the boundary condition $f(0) = 0$ gives $B = 0$, so $f(x) = A \sin(kx)$. To avoid the trivial solution ($A = 0$), the boundary condition $f(L) = 0$ requires
+    $$
+    kL = n\pi, \quad n \in \mathbb{Z}_{>0}.
+    $$
+    Thus, the allowed wave numbers are
+    $$
+    k(n) = \frac{n\pi}{L}.
+    $$
+    By normalization, we find $A = \sqrt{\frac{2}{L}}$, leading to the eigenfunctions
+    $$
+    f_n(x) = \sqrt{\frac{2}{L}} \sin\left(\frac{n\pi}{L}x\right).
+    $$
+    These functions form a complete, orthonormal basis, allowing the general solution for a potential well to be written as
+    $$
+    \Psi(x,t) = \sum_{n=1}^\infty c_n \sqrt{\frac{2}{L}} \sin\left(\frac{n\pi}{L}x\right) e^{-iE_nt/\hbar}.
+    $$
+    The coefficients $c_n$ are determined from the initial condition:
+    $$
+    \Psi(x,0) = \sum_{n=1}^\infty c_n f_n(x).
+    $$
+    Multiplying both sides by $f_m^*(x)$, integrating, and using orthonormality gives
+    $$
+    c_n = \sqrt{\frac{2}{L}} \int_0^L dx \sin\left(\frac{n\pi}{L}x\right) \Psi(x,0).
+    $$
+    ''')
+
     # Sidebar controls
     L = st.sidebar.slider("Well Length (L)", min_value=0.5, max_value=5.0, value=1.0, step=0.1)
     epsilon = st.sidebar.slider("Perturbation Strength (ε)", min_value=0.0, max_value=1.0, value=0.1, step=0.05)
     n = st.sidebar.slider("Quantum Number (n)", min_value=1, max_value=5, value=1, step=1)
-    
     # Compute energy levels and wavefunctions
     x = np.linspace(0, L, 200)
     E0, E1, E2, psi_0, psi_1, psi_2, psi_total = energy_and_wavefunctions_corrections(x, L=L, epsilon=epsilon, n=n)
-    
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-    
     # Energy Levels Plot
     axes[0].hlines(E0, 0.5, 1.5, color='blue', label='Unperturbed $E_n^{(0)}$')
     axes[0].hlines(E0 + E1, 1.5, 2.5, color='orange', label='1st Order $E_n^{(0)} + E_n^{(1)}$')
@@ -109,7 +151,6 @@ elif problem == "Potential Well":
     axes[0].set_ylabel('Energy')
     axes[0].legend()
     axes[0].grid(True)
-    
     # Wavefunctions Plot
     axes[1].plot(x, psi_0, label='Unperturbed $\\psi_n^{(0)}(x)$', color='blue')
     axes[1].plot(x, psi_0 + psi_1, label='1st Order $\\psi_n^{(0)}(x) + \\psi_n^{(1)}(x)$', color='orange')
@@ -119,6 +160,5 @@ elif problem == "Potential Well":
     axes[1].set_ylabel('Wavefunction $\\psi(x)$')
     axes[1].legend()
     axes[1].grid(True)
-    
     plt.tight_layout()
     st.pyplot(fig)
