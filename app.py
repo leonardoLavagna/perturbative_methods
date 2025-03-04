@@ -173,7 +173,7 @@ elif problem == "The potential well problem":
     $$
     To find the first-order correction to the wave function, we need to solve:
     $$
-    (\hat{H}-E_n)f_n^{(1)}=-(\hat{H}_{p}-E_n^{(1)})f_n\,.
+    (\hat{H}-E_n)f_n^{(1)}=-(\hat{H}^{(1)}-E_n^{(1)})f_n\,.
     $$
     Since the unperturbed wave functions constitute a complete set of orthonormal functions, we can write:
     $$
@@ -181,19 +181,19 @@ elif problem == "The potential well problem":
     $$
     for suitable constants $c_{mn}$, which means that:
     $$
-    \sum_{m\ne n} (E_m-E_n)c_{mn}f_m=-(\hat{H}_{p}-E^{(1)}_n)f_n
+    \sum_{m\ne n} (E_m-E_n)c_{mn}f_m=-(\hat{H}^{(1)}-E^{(1)}_n)f_n
     $$
     and taking the inner product with $f_k$ yields:
     $$
-    \sum_{m\ne n}(E_m-E_n)c_{mn}\langle f_k|f_m\rangle = -\langle f_k|\hat{H}_{p} f_n\rangle + E_n^{(1)}\langle f_k|f_n\rangle\,,
+    \sum_{m\ne n}(E_m-E_n)c_{mn}\langle f_k|f_m\rangle = -\langle f_k|\hat{H}^{(1)} f_n\rangle + E_n^{(1)}\langle f_k|f_n\rangle\,,
     $$
     or, equivalently, 
     $$
-    c_{mn}=\frac{\langle f_m|\hat{H}_{p} f_n\rangle}{E_n-E_m}\,.
+    c_{mn}=\frac{\langle f_m|\hat{H}^{(1)} f_n\rangle}{E_n-E_m}\,.
     $$
     Putting everything together, we have the general first-order correction to the wave function:
     $$
-    f_n^{(1)}=\sum_{m\ne n} \frac{\langle f_m|\hat{H}_{p}f_n\rangle}{E_n-E_m}f_m\,,
+    f_n^{(1)}=\sum_{m\ne n} \frac{\langle f_m|\hat{H}^{(1)} f_n\rangle}{E_n-E_m}f_m\,,
     $$
     which, in the potential well case we are considering, with a constant perturbation $V_0$, means:
     $$
@@ -205,7 +205,7 @@ elif problem == "The potential well problem":
     and the solution must be deduced using degenerate perturbation theory. In that case, indirect perturbative methods could also be tried as a valid alternative. 
     """)
     st.markdown(r"""Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy $E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}$,
-    the first order correction $E_n^{(0)}+E^{(1)}_n$, where $E_n^{(1)}=\langle f_n^{(0)} \ | \ V'f_n^{(0)}$ is obtained as the expectation value of the perturbation calculated in the
+    the first order correction $E_n^{(0)}+E^{(1)}_n$, where $E_n^{(1)}$ is obtained as the expectation value of the perturbation calculated in the
     unperturbed state, and the second order correction $E_n^{(0)}+E^{(1)}_n + E^{(2)}_n$, where 
     $E_n^{(2)}= \sum_{m\ne n}\frac{|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{E_n^{(0)}-E_{m}^(0)}$.
     In the right panel we see the corrections of the wavefunctions, starting from the unperturbed case $f_n^{(0)}(x)=\sqrt{\frac{2}{L}}\sin(\frac{n\pi x}{L})$,
