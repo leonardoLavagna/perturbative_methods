@@ -5,7 +5,7 @@ from utilities.perturbed_potential_well_utilities import *
 from utilities.unperturbed_potential_well_utilities import *
 from config import *
 
-st.title("Quantum Mechanics Simulations")
+st.title("Perturbative methods in action")
 
 # Select problem
 def select_problem():
