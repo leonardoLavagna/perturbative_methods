@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 from config import *
 import utilities.perturbed_potential_well_utilities as well
 import utilities.perturbed_harmonic_oscillator as harm
+import utilities.unperturbed_potential_well_utilities as well_0
+import utilities.unperturbed_harmonic_oscillator as harm_0
 
 
 
