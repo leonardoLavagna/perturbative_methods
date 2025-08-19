@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 from config import *
 import utilities.perturbed_potential_well_utilities as well
 import utilities.perturbed_harmonic_oscillator as harm
-import utilities.unperturbed_potential_well_utilities as well_0
-import utilities.unperturbed_harmonic_oscillator as harm_0
 
 
 
@@ -373,3 +371,4 @@ elif problem == "Harmonic oscillator":
     fig.legend(loc="lower center", bbox_to_anchor=(0.5,-0.1), ncol=3)
     plt.tight_layout()
     st.pyplot(fig)
+    
