@@ -12,7 +12,7 @@ from config import *
 st.title("Perturbative methods in action")
 
 def select_problem():
-    return st.sidebar.selectbox("Select a topic", ["Introduction", "The potential well problem"], index=0)
+    return st.sidebar.selectbox("Select a topic", ["Introduction", "Potential well", "Harmonic oscillator"], index=0)
     
 problem = select_problem()
 
@@ -120,7 +120,7 @@ elif problem == "Perturbative methods":
 ################################################
 # 3. POTENTIAL WELL
 ################################################  
-elif problem == "The potential well problem":
+elif problem == "Potential well":
     st.header("The potential well problem")
     st.markdown(r'''
     Consider a particle of mass $m$ confined to an interval $I := [0, L]$ of length $L > 0$. The potential is given by
@@ -258,3 +258,85 @@ elif problem == "The potential well problem":
     fig.legend(loc="lower center", bbox_to_anchor=(0.5, -0.1), ncol=3)
     plt.tight_layout()
     st.pyplot(fig)
+
+
+################################################
+# 4. Harmonic oscillator
+################################################  
+elif problem == "Harmonic oscillator":
+    st.header("The harmonic oscillator problem")
+    st.markdown(r'''
+    In classical mechanics, the [harmonic oscillator](https://en.wikipedia.org/wiki/Harmonic_oscillator) obeys Hooke's law  
+    $$
+    m\frac{d^2x}{dt^2}=-kx,
+    $$
+    with potential
+    $$
+    V(x)=\tfrac{1}{2}kx^2,\quad \omega=\sqrt{\tfrac{k}{m}}.
+    $$
+    In quantum mechanics the [Schrödinger equation becomes](https://en.wikipedia.org/wiki/Quantum_harmonic_oscillator)  
+    $$
+    -\frac{\hbar^2}{2m}\frac{d^2 f}{dx^2}+\tfrac{1}{2}m\omega^2x^2 f(x)=E f(x).
+    $$
+    Introduce the dimensionless variable  
+    $$
+    \xi=\sqrt{\tfrac{m\omega}{\hbar}}\,x.
+    $$  
+    Substituting into the equation yields
+    $$
+    \frac{d^2 f}{d\xi^2}=(\xi^2-K)f,\quad K=\frac{2E}{\hbar\omega}.
+    $$
+    For large $\xi$, solutions behave like $e^{-\xi^2/2}$ (normalizable) or $e^{+\xi^2/2}$ (non-normalizable, discarded). So we set
+    $$
+    f(\xi)=\eta(\xi)e^{-\xi^2/2},
+    $$
+    with $\eta(\xi)$ a polynomial. Assume a power series
+    $$
+    \eta(\xi)=\sum_{k=0}^\infty a_k \xi^k,
+    $$
+    leading to the recursion
+    $$
+    a_{k+2}=\frac{2k+1-K}{(k+1)(k+2)}a_k.
+    $$
+    For normalizability, the series must terminate, which happens only if
+    $$
+    K=2n+1,\quad n\in\mathbb{N}.
+    $$  
+    Thus the energies are
+    $$
+    E_n=\hbar\omega\Bigl(n+\tfrac{1}{2}\Bigr).
+    $$  
+    The corresponding eigenfunctions involve [Hermite polynomials](https://en.wikipedia.org/wiki/Hermite_polynomials):
+    $$
+    f_n(x)=\Bigl(\frac{m\omega}{\pi\hbar}\Bigr)^{1/4}\frac{1}{\sqrt{2^n n!}} H_n(\xi)e^{-\xi^2/2}.
+    $$  
+    as it is possible to deduce from the terms $a_k$ adn splitting even and odd terms in $\eta$. We now add a small perturbation $V_p=x$. As for the potential well problem,By definition,
+    $$
+    E_n^{(1)} = \langle f_n|\hat H'|f_n\rangle = \varepsilon\int_{-\infty}^{+\infty}dx\, f_n^*(x)\,x\,f_n(x).
+    $$ 
+    Using the Hermite polynomial [recurrence](https://en.wikipedia.org/wiki/Hermite_polynomials#Recurrence_relation)
+    $$
+    x H_n(x) = \tfrac{1}{2}H_{n+1}(x) + \tfrac{n}{2}H_{n-1}(x),
+    $$
+    and the [orthogonality](https://en.wikipedia.org/wiki/Hermite_polynomials#Orthogonality)
+    $$
+    \int_{-\infty}^\infty dx\, e^{-x^2}H_n(x)H_m(x)=0 \quad (n\neq m),
+    $$
+    the integral vanishes because it always couples $H_n$ with $H_{n\pm1}$. So$E_n^{(1)}=0$. For the second order correction the formula is
+    $$
+    E_n^{(2)}=\sum_{m\neq n}\frac{|\langle f_m|\hat H'|f_n\rangle|^2}{E_n^{(0)}-E_m^{(0)}}.
+    $$  
+    Since $V_p couples only $m=n\pm 1$, we need
+    $$
+    \langle n\pm1|x|n\rangle=\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n+1}\;\; \text{or}\;\;\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n}.
+    $$
+    Therefore,
+    $$
+    E_n^{(2)}=\frac{\varepsilon^2}{E_n-E_{n+1}}|\langle n+1|x|n\rangle|^2+\frac{\varepsilon^2}{E_n-E_{n-1}}|\langle n-1|x|n\rangle|^2.
+    $$  
+    Substituting $E_{n\pm1}-E_n=\pm\hbar\omega$ gives
+    $$
+    E_n^{(2)}=-\frac{\varepsilon^2}{2m\omega^2},
+    $$
+    which is independent of $n$.
+    ''')
