@@ -209,11 +209,11 @@ elif problem == "Potential well":
     ''')
     st.subheader("Visualizations")
     st.markdown(r'''
-    Here we show, in the left panel, the difference between energy levels and wavefunctions for the unperturbed energy
+    Here we show the difference between energy levels and wavefunctions starting from
     $$
-    E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}\,,
+    E_n^{(0)}=\frac{(n\pi\hbar)^2}{2mL^2}.
     $$
-    the first order correction $E_n^{(0)}+E^{(1)}_n$, where $E_n^{(1)}$ is obtained as the expectation value of the perturbation calculated in the
+    The first order correction $E_n^{(0)}+E^{(1)}_n$, where $E_n^{(1)}$ is obtained as the expectation value of the perturbation calculated in the
     unperturbed state, and the second order correction $E_n^{(0)}+E^{(1)}_n + E^{(2)}_n$, where 
     $$
     E_n^{(2)}= \sum_{m\ne n}\frac{|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{E_n^{(0)}-E_{m}^(0)}\,.
@@ -345,7 +345,11 @@ elif problem == "Harmonic oscillator":
     $$
     which is independent of $n$.
     ''')
-    
+
+    st.subheader("Visualizations")
+    st.markdown(r'''
+    Similarly to the case of the potential well, we show here the difference between energy levels and wavefunctions following the previous calculations.
+    ''')
     m = st.sidebar.slider("Mass m", min_value=0.5, max_value=5.0, value=1.0, step=0.5)
     omega = st.sidebar.slider("Frequency ω", min_value=0.5, max_value=5.0, value=1.0, step=0.5)
     epsilon = st.sidebar.slider("Perturbation strength ε", min_value=0.0, max_value=2.0, value=0.5, step=0.1)
