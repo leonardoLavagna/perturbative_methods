@@ -2,7 +2,7 @@ import numpy as np
 import math
 from numpy.polynomial.hermite import hermval
 from config import *
-from utilities.perturbed_harmonic_oscillator import *
+from utilities.unperturbed_harmonic_oscillator import *
 
 def first_order_correction(n, epsilon, m, omega, hbar=hbar):
     """First-order correction to the energy (vanishes for V'=εx)."""
