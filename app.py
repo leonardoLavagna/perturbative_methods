@@ -169,7 +169,6 @@ elif problem == "Potential well":
     c_n = \sqrt{\frac{2}{L}} \int_0^L dx \sin\left(\frac{n\pi}{L}x\right) \Psi(x,0).
     $$
     ''')
-    
     st.subheader("Energy shifts and perturbed wavefunctions")
     st.markdown(r'''
     If we consider the perturbation $V'=V_0$ obtained by adding a positive constant $V_0>0$ to the zero potential in the interval $I=[0,L]$,
@@ -237,10 +236,10 @@ elif problem == "Potential well":
     With the options in the menu on the left side of this page, we see that increasing $\epsilon$ increases the influence of the perturbing potential, making corrections to the energy levels and wavefunctions more pronounced. 
     Moreover, higher $n$-states exhibit larger deviations due to their higher energy levels and larger overlaps with the perturbing potential.
     ''')
+    
     L = st.sidebar.slider("Well Length (L)", min_value=0.5, max_value=10.0, value=1.0, step=0.1)
     epsilon = st.sidebar.slider("Perturbation Strength (ε)", min_value=0.0, max_value=10.0, value=0.1, step=0.1)
     n = st.sidebar.slider("Quantum Number (n)", min_value=1, max_value=10, value=1, step=1)
-    # Compute energy levels and wavefunctions
     x = np.linspace(0, L, 200)
     E0, E1, E2, psi_0, psi_1, psi_2, psi_total = well.energy_and_wavefunctions_corrections(x, L=L, epsilon=epsilon, n=n)
     fig, axes = plt.subplots(1, 2, figsize=(14, 8))
@@ -313,7 +312,12 @@ elif problem == "Harmonic oscillator":
     $$
     f_n(x)=\Bigl(\frac{m\omega}{\pi\hbar}\Bigr)^{1/4}\frac{1}{\sqrt{2^n n!}} H_n(\xi)e^{-\xi^2/2}.
     $$  
-    as it is possible to deduce from the terms $a_k$ adn splitting even and odd terms in $\eta$. We now add a small perturbation $V_p=x$. As for the potential well problem,By definition,
+    as it is possible to deduce from the terms $a_k$ adn splitting even and odd terms in $\eta$.
+    ''')
+    
+    st.subheader("Energy shifts and perturbed wavefunctions")
+    st.markdown(r'''
+    We now add a small perturbation $V_p=x$. As for the potential well problem,By definition,
     $$
     E_n^{(1)} = \langle f_n|\hat H'|f_n\rangle = \varepsilon\int_{-\infty}^{+\infty}dx\, f_n^*(x)\,x\,f_n(x).
     $$ 
@@ -343,6 +347,7 @@ elif problem == "Harmonic oscillator":
     $$
     which is independent of $n$.
     ''')
+    
     m = st.sidebar.slider("Mass m", min_value=0.5, max_value=5.0, value=1.0, step=0.5)
     omega = st.sidebar.slider("Frequency ω", min_value=0.5, max_value=5.0, value=1.0, step=0.5)
     epsilon = st.sidebar.slider("Perturbation strength ε", min_value=0.0, max_value=2.0, value=0.5, step=0.1)
