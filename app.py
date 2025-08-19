@@ -1,9 +1,12 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+from config import *
 from utilities.perturbed_potential_well_utilities import *
 from utilities.unperturbed_potential_well_utilities import *
-from config import *
+from utilities.unperturbed_harmonic_oscillator import *
+from utilities.perturbed_harmonic_oscillator import *
+
 
 
 ################################################
@@ -340,3 +343,28 @@ elif problem == "Harmonic oscillator":
     $$
     which is independent of $n$.
     ''')
+    m = st.sidebar.slider("Mass m", min_value=0.5, max_value=5.0, value=1.0, step=0.5)
+    omega = st.sidebar.slider("Frequency ω", min_value=0.5, max_value=5.0, value=1.0, step=0.5)
+    epsilon = st.sidebar.slider("Perturbation strength ε", min_value=0.0, max_value=2.0, value=0.5, step=0.1)
+    n = st.sidebar.slider("Quantum number n", min_value=0, max_value=8, value=0, step=1)
+    a = np.sqrt(hbar/(m*omega))  # oscillator length scale
+    x = np.linspace(-4*a, 4*a, 600)
+    E0, E1, E2, psi_0, psi_1, psi_total = energy_and_wavefunctions_corrections(x, n=n, epsilon=epsilon, m=m, omega=omega, hbar=hbar)
+    fig, axes = plt.subplots(1, 2, figsize=(14, 8))
+    axes[0].hlines(E0, 0.5, 1.5, color='blue', label='Unperturbed $E_n^{(0)}$')
+    axes[0].hlines(E0+E1, 1.5, 2.5, color='red', label='1st order')
+    axes[0].hlines(E0+E1+E2, 2.5, 3.5, color='green', label='2nd order')
+    axes[0].set_title('Energy Levels')
+    axes[0].set_xticks([])
+    axes[0].set_ylabel('Energy')
+    axes[0].grid(True)
+    axes[1].plot(x, psi_0, label='Unperturbed $\\psi_n^{(0)}$', color='blue')
+    axes[1].plot(x, psi_0+psi_1, label='1st order $\\psi_n^{(0)}+\\psi_n^{(1)}$', color='red')
+    axes[1].plot(x, psi_total, label='Corrected $\\psi_n$', color='green')
+    axes[1].set_title('Wavefunctions')
+    axes[1].set_xlabel('Position $x$')
+    axes[1].set_ylabel('Wavefunction $\\psi(x)$')
+    axes[1].grid(True)
+    fig.legend(loc="lower center", bbox_to_anchor=(0.5,-0.1), ncol=3)
+    plt.tight_layout()
+    st.pyplot(fig)
