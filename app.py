@@ -76,9 +76,11 @@ if problem == "Introduction":
     $$
     The key challenge is solving the time-independent Schrödinger equation and determining the coefficients $c_n$ to match initial conditions. 
     In [perturbation theory](https://en.wikipedia.org/wiki/Perturbation_theory_(quantum_mechanics)), we introduce a small perturbation $\hat{H}'(\varepsilon)$, 
-    express energy corrections as a power series in $ \varepsilon$, and approximate the perturbed wavefunction. 
-    The goal is to extend the unperturbed solution $f_n$ to the perturbed case and reconstruct the overall perturbed wavefunction $\Psi'$ from $f_n'$ and the corresponding 
-    time evolution function.
+    express energy corrections as a power series in $ \varepsilon$, and approximate the perturbed wavefunction, starting from a known unperturbed solution, so that we can laverage an 
+    approximation scheme that allows us to extend the knowledge about an exactly solvable system to other quantum systems, at least locally. In particular, the 
+    goal of perturbation theory is to extend the unperturbed solution $f_n$ to the perturbed case and reconstruct the overall perturbed wavefunction $\Psi'$ from $f_n'$ and the corresponding 
+    time evolution function. This schemes yield separation of scales (depending on the size of $\varepsilon$) and corrections to progressively approximate even the most difficult cases.
+    
 
     In this app, we provide the solution of some one-dimensional quantum mechanical problems with insightful visualizations.
     ''')
