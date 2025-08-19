@@ -347,7 +347,7 @@ elif problem == "Harmonic oscillator":
     n = st.sidebar.slider("Quantum number n", min_value=0, max_value=8, value=0, step=1)
     a = np.sqrt(hbar/(m*omega))  
     x = np.linspace(-4*a, 4*a, 600)
-    E0, E1, E2, psi_0, psi_1, psi_total = harm.perturbed_harmonic_oscillator.energy_and_wavefunctions_corrections(x, n=n, epsilon=epsilon, m=m, omega=omega, hbar=hbar)
+    E0, E1, E2, psi_0, psi_1, psi_total = harm.energy_and_wavefunctions_corrections(x, n=n, epsilon=epsilon, m=m, omega=omega, hbar=hbar)
     fig, axes = plt.subplots(1, 2, figsize=(14, 8))
     axes[0].hlines(E0, 0.5, 1.5, color='blue', label='Unperturbed $E_n^{(0)}$')
     axes[0].hlines(E0+E1, 1.5, 2.5, color='red', label='1st order')
