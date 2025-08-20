@@ -404,7 +404,16 @@ elif problem == "Charged particle":
     $$
     E_n^{(2)} = \sum_{m\neq n} \frac{|\langle f_m| V'| f_n \rangle|^2}{E_n^{(0)} - E_m^{(0)}},
     $$
-    which yields a [quadratic Stark-like shift](https://en.wikipedia.org/wiki/Stark_effect) proportional to $q^2 \epsilon^2$.
+    which yields a [quadratic Stark-like shift](https://en.wikipedia.org/wiki/Stark_effect) proportional to $q^2 \epsilon^2$. In particular, the matrix elements are
+    $$
+    \langle f_m|x|f_n\rangle =
+    \sqrt{\frac{\hbar}{2m\omega}}\left(\sqrt{n+1}\,\delta_{m,n+1} + \sqrt{n}\,\delta_{m,n-1}\right).
+    $$
+    Thus only $m=n\pm1$ contribute, giving
+    $$
+    E_n^{(2)}=-\frac{\varepsilon^2}{2m\omega^2}.
+    $$
+    This negative shift reflects the fact that the potential energy is effectively lowered by the external electric field.
     ''')
     st.subheader("Visualizations")
     st.markdown(r'''
