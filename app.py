@@ -231,7 +231,6 @@ elif problem == "Potential well":
     $$
     f_n^{(2)}(x)=\sum_{m\ne n}\sum_{k\ne m}\frac{|\langle f_k^{(0)} \ | \ V'f_m^{(0)}|^2|\langle f_m^{(0)} \ | \ V'f_n^{(0)}|^2}{(E_n^{(0)}-E_{m}^(0))(E_m^{(0)}-E_{k}^(0))} f_k^{(0)}(x)\,.
     $$
-
     With the options in the menu on the left side of this page, we see that increasing $\epsilon$ increases the influence of the perturbing potential, making corrections to the energy levels and wavefunctions more pronounced. 
     Moreover, higher $n$-states exhibit larger deviations due to their higher energy levels and larger overlaps with the perturbing potential.
     ''')
