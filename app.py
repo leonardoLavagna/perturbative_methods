@@ -386,7 +386,7 @@ elif problem == "Charged particle":
     We now consider a charged particle of charge $q$ confined in a one-dimensional box of length $L$,
     subject to a uniform electric field $\epsilon$. The perturbing potential is
     $$
-    \epsilon V_p(x) = -q \epsilon x.
+    V' = -q \epsilon x.
     $$
     The unperturbed system is identical to the infinite square well, with eigenfunctions
     $$
