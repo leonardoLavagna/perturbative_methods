@@ -331,7 +331,7 @@ elif problem == "Harmonic oscillator":
     $$
     E_n^{(2)}=\sum_{m\neq n}\frac{|\langle f_m|\hat H'|f_n\rangle|^2}{E_n^{(0)}-E_m^{(0)}}.
     $$  
-    Since $V_p couples only $m=n\pm 1$, we need
+    Since $V_p$ couples only $m=n\pm 1$, we need
     $$
     \langle n\pm1|x|n\rangle=\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n+1}\;\; \text{or}\;\;\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n}.
     $$
