@@ -402,7 +402,7 @@ elif problem == "Charged particle":
     $$
     due to the symmetry of the integral. The second-order correction reads
     $$
-    E_n^{(2)} = \sum_{m\neq n} \frac{|\langle f_m| \epsilon V_p | f_n \rangle|^2}{E_n^{(0)} - E_m^{(0)}},
+    E_n^{(2)} = \sum_{m\neq n} \frac{|\langle f_m| V'| f_n \rangle|^2}{E_n^{(0)} - E_m^{(0)}},
     $$
     which yields a [quadratic Stark-like shift](https://en.wikipedia.org/wiki/Stark_effect) proportional to $q^2 \epsilon^2$.
     ''')
