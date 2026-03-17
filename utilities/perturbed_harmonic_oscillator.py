@@ -46,7 +46,7 @@ def energy_and_wavefunctions_corrections(x, n, epsilon, m, omega, hbar=hbar):
     psi_1 = Psi_1_prime(x, n, epsilon, m, omega, hbar)
     psi_total = psi_0 + psi_1
     # Normalize corrected wavefunction
-    norm = np.sqrt(np.trapz(np.abs(psi_total)**2, x))
+    norm = np.sqrt(np.trapezoid(np.abs(psi_total)**2, x))
     if norm > 0:
         psi_total /= norm
 
