@@ -46,7 +46,7 @@ def energy_and_wavefunctions_corrections(x, L, n=1, q=1.0, E_field=0.1):
     psi_0 = f_n(n, x, L)  
     psi_1 = Psi_1_prime(x, n, q, E_field, L)  
     psi_total = psi_0 + psi_1  
-    psi_total /= np.sqrt(np.trapz(psi_total**2, x))
+    psi_total /= np.sqrt(np.trapezoid(psi_total**2, x))
     E0 = E_n(n, L)
     E1 = first_order_correction(n, q, E_field, L)
     E2 = second_order_correction(n, q, E_field, L)
