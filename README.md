@@ -1,5 +1,5 @@
 # perturbative_methods
-Implementations related to the article "Time-Independent Perturbation Theory in One-Dimensional Quantum Systems: A Tutorial for Quantum Computing Practitioners".
+Implementations related to the article "A topical review on time-independent perturbation theory in one-dimensional quantum systems".
 
 ## What's in here
 Here you can find the companion code of the project.
@@ -22,5 +22,21 @@ We welcome contributions to enhance the functionality and performance of the mod
 This project is licensed under the MIT License.
 
 ## Citation
-Cite this repository or one of the associated papers *soon available*...
+Cite this repository or one of the associated papers.
+
+```
+@article{Lavagna_2025,
+doi = {10.1088/1402-4896/ae0a8f},
+url = {https://doi.org/10.1088/1402-4896/ae0a8f},
+year = {2025},
+month = {oct},
+publisher = {IOP Publishing},
+volume = {100},
+number = {10},
+pages = {102001},
+author = {Lavagna, Leonardo and Carillo, Sandra and Panella, Massimo},
+title = {A topical review on time-independent perturbation theory in one-dimensional quantum systems},
+journal = {Physica Scripta}
+}
+```
 
